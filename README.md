@@ -1,2 +1,6 @@
-# advent-of-code
-🎄 Advent of code solutions
+# Advent of Code solutions
+
+| Year | Day |   |
+|------|-----|---|
+| 2019 | 01  | ✔️ |
+
