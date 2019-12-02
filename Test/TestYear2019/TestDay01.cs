@@ -14,7 +14,7 @@ namespace Test.TestYear2019
         [DataRow("100756", "33583")]
         public override void Solution1(string input, string expectedResult)
         {
-            Assert.AreEqual(expectedResult, Day.GetSolution1(new[] { input }));
+            Assert.AreEqual(expectedResult, Day.GetSolution1(input));
         }
 
         [DataTestMethod]
@@ -24,7 +24,7 @@ namespace Test.TestYear2019
         [DataRow("100756", "50346")]
         public override void Solution2(string input, string expectedResult)
         {
-            Assert.AreEqual(expectedResult, Day.GetSolution2(new[] { input }));
+            Assert.AreEqual(expectedResult, Day.GetSolution2(input));
         }
     }
 }
