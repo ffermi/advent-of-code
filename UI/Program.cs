@@ -13,10 +13,8 @@ namespace UI
             var day = new Day02();
             var input = File.ReadAllText(@"Input\2019-02.txt");
             Console.WriteLine($"Solution1: {day.GetSolution1(input)}");
-            //Console.WriteLine($"Solution2: {day.GetSolution2(input)}");
+            Console.WriteLine($"Solution2: {day.GetSolution2(input)}");
         }
         
-
-
     }
 }

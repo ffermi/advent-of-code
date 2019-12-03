@@ -7,52 +7,90 @@ namespace Logic.Year2019
     {
         public string GetSolution1(string input)
         {
-            int[] instructions = input.Split(',').Select(x => int.Parse(x)).ToArray();
+            int[] result;
 
-#if  RELEASE
-            instructions[1] = 12;
-            instructions[2] = 2;
+#if RELEASE
+            result = ExecuteIntcode(input, noun: 12, verb: 2);
+            return result[0].ToString();
+#else
+            result = ExecuteIntcode(input, noun: null, verb: null);
+            return string.Join(',', result);
 #endif
-
-            for (int i = 0; i < instructions.Length; i = i + 4)
-            {
-                var op = (OpCode)instructions[i];
-                
-                if (op.Equals(OpCode.Halt)) break;
-
-                var data = GetRefData(instructions, i);
-                instructions[data.refResult] = GetResult(op, instructions[data.ref1], instructions[data.ref2]);
-            }
-
-            return string.Join(',', instructions);
-
-            (int ref1, int ref2, int refResult) GetRefData(int[] input, int i) => (instructions[i + 1], instructions[i + 2], instructions[i + 3]);
-
-            int GetResult(OpCode op, int a, int b)
-            {
-                switch (op)
-                {
-                    case OpCode.Add:
-                        return a + b;    
-                    case OpCode.Multiply:
-                        return a * b;
-                    case OpCode.Halt:
-                    default:
-                        return -1;
-                }
-            }
         }
 
         public string GetSolution2(string input)
         {
-            throw new NotImplementedException();
+            const int ExpectedResult = 19690720;
+            const int MaxValue = 99;
+
+            int noun = 0;
+            int verb = 0;
+            int result = 0;
+
+            for (noun = 0; noun < MaxValue; noun++)
+            {
+                for (verb = 0; verb < MaxValue; verb++)
+                {
+                    result = ExecuteIntcode(input, noun, verb)[0];
+                    if (result.Equals(ExpectedResult)) break;
+                }
+                if (result.Equals(ExpectedResult)) break;
+            }
+
+            return $"{100 * noun + verb}";
+        }
+
+
+        private int[] ExecuteIntcode(string input, int? noun, int? verb)
+        {
+            const int InstructionPointerStep = 4;
+            int[] intcode = GetIntcode(input, noun, verb);
+
+            for (int i = 0; i < intcode.Length; i = i + InstructionPointerStep)
+            {
+                var opCode = (OpCode)intcode[i];
+
+                if (opCode.Equals(OpCode.Halt)) break;
+
+                var param = GetAddresses(intcode, i);
+
+                intcode[param.address3] = ExecuteInstruction(opCode, intcode[param.address1], intcode[param.address2]);
+            }
+
+            return intcode;
+        }
+
+        private int[] GetIntcode(string input, int? noun = null, int? verb = null)
+        {
+            var intcode = input.Split(',').Select(x => int.Parse(x)).ToArray();
+
+            if (noun.HasValue) intcode[1] = noun.Value;
+            if (verb.HasValue) intcode[2] = verb.Value;
+
+            return intcode;
+        }
+
+        private (int address1, int address2, int address3) GetAddresses(int[] intcode, int i) => (intcode[i + 1], intcode[i + 2], intcode[i + 3]);
+
+        int ExecuteInstruction(OpCode op, int input1, int input2)
+        {
+            switch (op)
+            {
+                case OpCode.Add:
+                    return input1 + input2;
+                case OpCode.Multiply:
+                    return input1 * input2;
+                case OpCode.Halt:
+                default:
+                    return -1;
+            }
         }
     }
 
     internal enum OpCode
     {
         Add = 1,
-        Multiply = 2,
+        Multiply,
         Halt = 99
     }
 }
