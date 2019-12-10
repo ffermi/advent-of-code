@@ -11,7 +11,7 @@ namespace UI
         {
             Console.WriteLine("AdventOfCode");
 
-            PrintSolution<Day06>();
+            PrintSolution<Day08>();
         }
         
 
