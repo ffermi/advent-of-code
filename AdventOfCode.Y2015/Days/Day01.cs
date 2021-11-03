@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventOfCode.Common;
 
 namespace AdventOfCode.Y2015.Days
 {
-    public class Day01
+    public class Day01 : IDay
     {
-        // Literals
         private const char Up = '(';
-        private const char Down = ')';
 
         private const int Basement = -1;
 

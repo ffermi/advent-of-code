@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventOfCode.Common;
 
 namespace AdventOfCode.Y2015.Days
 {
-    public class Day02
+
+    public class Day02 : IDay
     {
         //Area = 2*l*w + 2*w*h + 2*h*l + little extra paper for each present: the area of the smallest side.
 
