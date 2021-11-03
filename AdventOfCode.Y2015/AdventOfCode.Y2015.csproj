@@ -12,4 +12,14 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <None Update="Inputs\2015-01.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Inputs\2015-02.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
 </Project>
