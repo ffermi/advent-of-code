@@ -5,9 +5,9 @@ namespace Logic.Year2019
 {
     public class Day01 : ISolvePuzzles
     {
-        public string GetSolution1(string moduleMasses)
+        public string GetSolution1(string calibrationValues)
         {
-            return moduleMasses
+            return calibrationValues
                 .Split(Environment.NewLine)
                 .Select(x => long.Parse(x))
                 .Select(FuelRequired)

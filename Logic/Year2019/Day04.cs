@@ -7,9 +7,9 @@ namespace Logic.Year2019
 {
     public class Day04 : ISolvePuzzles
     {
-        public string GetSolution1(string input)
+        public string GetSolution1(string calibrationValues)
         {
-            var boundaries = input.Split('-');
+            var boundaries = calibrationValues.Split('-');
             int min = int.Parse(boundaries[0]);
             int max = int.Parse(boundaries[1]);
 

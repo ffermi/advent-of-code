@@ -1,7 +1,7 @@
 ﻿using Logic;
-using Logic.Year2019;
 using System;
 using System.IO;
+using Logic.Year2023;
 
 namespace UI
 {
@@ -11,7 +11,7 @@ namespace UI
         {
             Console.WriteLine("AdventOfCode");
 
-            PrintSolution<Day08>();
+            PrintSolution<Day03>();
         }
         
 
@@ -20,7 +20,7 @@ namespace UI
             T day = Activator.CreateInstance<T>();
 
             var num = day.GetType().Name.Substring(3);
-            var input = File.ReadAllText(@$"Input\2019-{num}.txt");
+            var input = File.ReadAllText(@$"Input/2023-{num}.txt");
 
             Console.WriteLine($"Solution1: {day.GetSolution1(input)}");
             Console.WriteLine($"Solution2: {day.GetSolution2(input)}");

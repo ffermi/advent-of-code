@@ -6,9 +6,9 @@ namespace Logic.Year2019
 {
     public class Day06 : ISolvePuzzles
     {
-        public string GetSolution1(string input)
+        public string GetSolution1(string calibrationValues)
         {
-            var orbits = input.Split(Environment.NewLine).Select(x => x.Split(')'));
+            var orbits = calibrationValues.Split(Environment.NewLine).Select(x => x.Split(')'));
 
             IDictionary<string, string> inverseOrbits = orbits.ToDictionary(x => x[1], x => x[0]);
 

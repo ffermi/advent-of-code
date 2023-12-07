@@ -14,14 +14,14 @@ namespace Logic.Year2019
         int height = 2;
 #endif
 
-        public string GetSolution1(string input)
+        public string GetSolution1(string calibrationValues)
         {
             int layerLength = width * height;
 
             string min = string.Empty;
-            for (int i = 0; i < input.Length; i += layerLength)
+            for (int i = 0; i < calibrationValues.Length; i += layerLength)
             {
-                var s = input.Substring(i, layerLength);
+                var s = calibrationValues.Substring(i, layerLength);
                 if (string.IsNullOrEmpty(min) || min.Count(x => x.Equals('0')) > s.Count(x => x.Equals('0'))) 
                     min = s;
             }

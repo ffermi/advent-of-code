@@ -5,7 +5,7 @@ namespace Logic.Year2019
 {
     public class Day02 : ISolvePuzzles
     {
-        public string GetSolution1(string input)
+        public string GetSolution1(string calibrationValues)
         {
             int[] result;
 
@@ -13,7 +13,7 @@ namespace Logic.Year2019
             result = ExecuteIntcode(input, noun: 12, verb: 2);
             return result[0].ToString();
 #else
-            result = ExecuteIntcode(input, noun: null, verb: null);
+            result = ExecuteIntcode(calibrationValues, noun: null, verb: null);
             return string.Join(',', result);
 #endif
         }

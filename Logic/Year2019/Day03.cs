@@ -6,9 +6,9 @@ namespace Logic.Year2019
 {
     public class Day03 : ISolvePuzzles
     {
-        public string GetSolution1(string input)
+        public string GetSolution1(string calibrationValues)
         {
-            string[] wireInput = input.Split('\n');
+            string[] wireInput = calibrationValues.Split('\n');
 
             IDictionary<Point, int> wirePath1 = GetWirePath(wireInput[0].Split(','));
             IDictionary<Point, int> wirePath2 = GetWirePath(wireInput[1].Split(','));
